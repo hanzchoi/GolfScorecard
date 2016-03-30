@@ -4,6 +4,8 @@ import android.app.ListActivity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 
 public class MainActivity extends ListActivity {
     private static final String PREF_FILE = "personabe1984.nyc.golfscorecard.preferences";
@@ -41,5 +43,23 @@ public class MainActivity extends ListActivity {
             mEditor.putInt(KEY_STROKECOUNT + i ,mHoles[i].getStrokeCount());
         }
         mEditor.apply();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu){
+
+        getMenuInflater().inflate(R.menu.menu_main,menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+
+        if(id == R.id.action_clear_strokes){
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 }
